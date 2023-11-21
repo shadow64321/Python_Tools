@@ -1,6 +1,7 @@
 # Hacking_Tools
 
 ## Video Downloader
+    - Dowloads Videos from any site as an mp4 file
 ### How To Use:
     1. Navagate to the video you want to dowload from youtube
     2. Hit the share button and copy the link
