@@ -9,8 +9,10 @@ def Check_BMR():
         f.close()                               
         print('You have ' + y + ' calories remaining')
     else:
-        print('Error: Log file corrupted or removed')
-        exit
+        print('It apears you have forgotten to run "5) First time setup"')
+        print('We will now call it for you : )')
+        First_Time_Setup()
+        Check_BMR()
 
 def Reset_Daily_BMR():                                          
     if os.path.isfile('BMR.json') & os.path.isfile('Goal.json'):
@@ -23,26 +25,43 @@ def Reset_Daily_BMR():
         print('Calories Reset')                                 
         print('GOOD LUCK TODAY! : )')
     else:
-        print('Error: Log file corrupted or removed')
-        exit
+        print('It apears you have forgotten to run "5) First time setup"')
+        print('We will now call it for you : )')
+        First_Time_Setup()
+        Reset_Daily_BMR()
 
 def Write_Data(x):
-        f = open('BMR.json', 'w')
-        f.write(json.dumps(x))
-        f.close()
+        if os.path.isfile('BMR.json'):
+            f = open('BMR.json', 'w')
+            f.write(json.dumps(x))
+            f.close()
+        else:
+            print('Error: Required file "BMR.json" corrupted or removed')
+            exit
+
 
 def Read_Data():
-    f = open('BMR.json', 'r')
-    x = int(f.readline())
-    f.close()
-    print(x)
-    Calculate_Cal_Remaining(x)
+    if os.path.isfile('BMR.json'):
+        f = open('BMR.json', 'r')
+        x = int(f.readline())
+        f.close()
+        print(x)
+        Calculate_Cal_Remaining(x)
+    else:
+        print('Error: Required file/s "BMR.json" "Goal.json" corrupted or removed')
+        exit
     
     
 def Change_Goal(y):
-    f = open('Goal.json', 'w')
-    f.write(json.dumps(int(y)))
-    f.close()
+    if os.path.isfile('Goal.json'):
+        f = open('Goal.json', 'w')
+        f.write(json.dumps(int(y)))
+        f.close()
+    else:
+        print('It apears you have forgotten to run "5) First time setup"')
+        print('We will now call it for you : )')
+        First_Time_Setup()
+        Change_Goal()
 
 def First_Time_Setup():
     Goal = int(input('What would you like your daily calorie goal to be? '))
@@ -61,12 +80,17 @@ def Calculate_Cal_Per_Serve():
     print(Cal * Serves)
 
 def Calculate_Cal_Remaining(data):
-    Usr_Input = int(input('How many calories in your last meal? '))
-    Usr_BMR = data - Usr_Input
+    if os.path.isfile('BMR.json'):
+        Usr_Input = int(input('How many calories in your last meal? '))
+        Usr_BMR = data - Usr_Input
     
-    print('Total daily calories: ' + str(Read_Data()))
-    print('Remaining calories: ' + str(Usr_BMR))
-    Write_Data(Usr_BMR)
+        print('Total daily calories: ' + str(Read_Data()))
+        print('Remaining calories: ' + str(Usr_BMR))
+        Write_Data(Usr_BMR)
+    else:
+        print('It apears you have forgotten to run "5) First time setup"')
+        print('We will now call it for you : )')
+        First_Time_Setup()
 
 
 # Main
@@ -74,7 +98,7 @@ print('1) Calculate calories per serve')
 print('2) Calculate calories remaining')
 print('3) Reset daily calore count')
 print('4) Check how many calories you have left')
-print('5) Fisrt time setup')
+print('5) First time setup')
 print('6) Exit')
 
 Selection = input('Enter the corresponding number: ')
@@ -84,7 +108,10 @@ elif '2' in Selection:
     if os.path.isfile('BMR.json'):
         Read_Data()
     else:
-        Write_Data(Read_Data())
+        print('It apears you have forgotten to run "5) First time setup"')
+        print('We will now call it for you : )')
+        First_Time_Setup()
+        Read_Data()
 elif '3' in Selection:
     Reset_Daily_BMR()
 elif '4' in Selection:
