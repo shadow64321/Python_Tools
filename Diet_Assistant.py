@@ -16,7 +16,7 @@ def Reset_Daily_BMR():
     if os.path.isfile('BMR.json') & os.path.isfile('Goal.json'):
         f_BMR = open('BMR.json', 'w')
         f_Goal = open('Goal.json', 'r')
-        Goal = str(f_Goal.readlines())
+        Goal = f_Goal.readline()
         f_BMR.write(json.dumps(int(Goal)))
         f_BMR.close()
         f_Goal.close()
@@ -50,7 +50,7 @@ def First_Time_Setup():
     if os.path.isfile('Goal.json'):
         f_BMR = open('BMR.json', 'w')
         f_Goal = open('Goal.json', 'r')
-        Goal = str(f_Goal.readlines())
+        Goal = f_Goal.readline()
         f_BMR.write(json.dumps(int(Goal)))
         f_BMR.close()
         f_Goal.close()
