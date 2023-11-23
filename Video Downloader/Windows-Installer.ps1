@@ -8,4 +8,6 @@ python get-pip.py
 
 pip install pyinstaller
 
+pip install pytube
+
 pyinstaller Video_Downloader.py --onefile
