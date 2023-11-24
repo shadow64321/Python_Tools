@@ -19,18 +19,28 @@ if 1 == Usr_Input:
     yd = yt.streams.get_highest_resolution()
 
     print(f'Downloading {Name}')
-    yd.download('Downloaded-Content')
+    yd.download('Downloaded-Content/Videos')
+    print(f'Downloaded {Name}')
 
-    #if os.path.isfile(f'~/Videos/{Name}'):
+    #if os.path.isfile(f'~/Videos/{Name}.mp4'):
     #    print(f'{Name} Downloaded')
     #else:
     #    print(f'Error occured while downloading {Name}')
 
 elif 2 == Usr_Input:
     print(f'Downloading {Name}')
-    yt.streams.get_audio_only(link)
+    t=yt.streams.filter(only_audio=True)
+    downloaded_file = t[0].download('Downloaded-Content/Audio')
+    base, ext = os.path.splitext(downloaded_file)
+    new_file = base + '.mp3'
+    os.rename(downloaded_file, new_file)
+    print(f'Downloaded {Name}')
     
-    if os.path.isfile('Downloaded-Content/{Name}'):
-        print(f'{Name} Downloaded')
-    else:
-        print(f'Error occured while downloading {Name}')
+    #if os.path.isfile('Downloaded-Content/{Name}' + '.mp4'):
+    #    print(f'{Name} Downloaded')
+    #else:
+    #    print(f'Error occured while downloading {Name}')
+
+else:
+    print('Error: Selection invalid')
+    exit
