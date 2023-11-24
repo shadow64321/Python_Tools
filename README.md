@@ -14,6 +14,6 @@ Just a nice little program to assist you in your dieting
 ### How To Use:
 run the executable or the python file in the command line and pass the url to the video/audio you wish to download as an argument NOTE: the url must be in '' or ""
 Syntax:
-    python3 Video_Downloader '(Url)'
+    'python3 Video_Downloader '(Url)''
     or
-    ./Video_Downloader '(Url)'
+    './Video_Downloader '(Url)''
