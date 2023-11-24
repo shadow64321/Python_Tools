@@ -1,5 +1,8 @@
 # Python_Tools
 
+## Choice De-paralyser
+The Choice De-paralyser is ment to help you manage your time by negating the need to think about what to do next, all you have to do is follow its instructions and it will spit out what it thinks you should do
+
 ## Diet Assistant
 Just a nice little program to assist you in your dieting
 
