@@ -1,5 +1,10 @@
 import os, json, random
 
+def Print_Menu():
+    print('1) Run Choice De-paralyser')
+    print('2) Edit Catagories')
+    print('3) Edit Choices')
+
 def Randomise(file):
     f = open(file, 'r')
     x = f.readline()
@@ -53,9 +58,7 @@ def Edit_Choices(file):
 
 
 # Main
-print('1) Run Choice De-paralyser')
-print('2) Edit Catagories')
-print('3) Edit Choices')
+Print_Menu()
 Answer = int(input('Select an operation: '))
 if 1 == Answer:
     if os.path.isfile('Choices.json'):
