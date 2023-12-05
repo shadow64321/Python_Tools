@@ -6,6 +6,6 @@ c:/temp/python-3.7.0.exe /quiet InstallAllUsers=0 InstallLauncherAllUsers=0 Prep
 
 python get-pip.py
 
-pip install pyinstaller
+python.exe -m pip install pyinstaller
 
 pyinstaller Choice_De-Paralyser.py --onefile
