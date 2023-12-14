@@ -22,7 +22,6 @@ def main():
   Url = app.Url_Textbox.get('1.0', 'end')
   Download(Url, Password, Username)
 
-
 def Download_Button_Callback():
   main()
   Username = app.Username_Textbox.get('1.0', 'end')
@@ -35,10 +34,10 @@ class App(ctk.CTk):
         super().__init__()
         self.grid_columnconfigure(0, weight=1)
 
-        self.Welcome = ctk.CTkLabel(master=self, width=400, corner_radius=0, text='Welcome to Netflix Downloader')
+        self.Welcome = ctk.CTkLabel(master=self, width=400, corner_radius=0, text='Welcome to Netflix Movie and TV Show Downloader')
         self.Welcome.grid(row=0, column=0, columnspan=3, sticky='nsew')
 
-        self.Updateable_Label = ctk.CTkLabel(master=self, width=400, corner_radius=0, text='%Staus Unkown%')
+        self.Updateable_Label = ctk.CTkLabel(master=self, width=400, corner_radius=0, text='Download Staus Unknown')
         self.Updateable_Label.grid(row=1, column=0, columnspan=3, sticky='nsew')
 
         self.Username_Label = ctk.CTkLabel(master=self, width=400, corner_radius=0, text='Username: ')
